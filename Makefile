@@ -3,12 +3,12 @@ PG_DB=ipeds
 GENERATED_FILES = schools_raw.csv
 
 # Non-file targets
-.PHONY: all clean
+.PHONY: all clean process
 
 clean:
 	rm -Rf build/*
 
-all: $(GENERATED_FILES)
+all: schools_raw.csv process
 
 schools_raw.csv:
 		psql -d $(PG_DB) -c \
@@ -33,17 +33,12 @@ schools_raw.csv:
 					ON "HD2014"."UNITID"="DRVEF2014"."UNITID" \
 					INNER JOIN "SFA1314_P1" \
 					ON "HD2014"."UNITID"="SFA1314_P1"."UNITID" \
-					LIMIT 30 \
 					) \
 		TO STDOUT WITH CSV HEADER' > build/$@
 		touch build/$@
 
 # Create the main csv file with human readble data from IPEDS
-# schools_processed.csv : schools_raw.csv
-# Code goes here.
+process:
+		python decoder.py
 
-
-# "EFBKAAT", "EFHISPT", "EFWHITT", \
-# INNER JOIN "EF2014A" \
-# 					ON "HD2014"."UNITID"="EF2014A"."UNITID" \
 

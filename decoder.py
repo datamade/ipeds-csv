@@ -1,6 +1,7 @@
 import csv
 
 file_to_decode = 'build/schools_raw.csv'
+file_to_build  = 'build/schools_processed.csv'
 decoder = {
     "LOCALE": {
         11: "City: Large",
@@ -136,14 +137,21 @@ def decode_csv():
                     decoded_value = decoder[str(column)][int(value)]
                     row[column]   = decoded_value
 
-                    rows_collection.append(row)
                 except KeyError:
                     pass
 
-        output = open('schools_processed.csv', 'wb')
+            rows_collection.append(row)
+
+        output = open(file_to_build, 'wb')
         writer = csv.DictWriter(output, row.keys())
-        writer.writeheader()
+
+        # Put headers in order.
+        header_dict = dict((h, h) for h in reader.fieldnames)
+        writer.fieldnames = reader.fieldnames
+        writer.writerow(header_dict)
+
         writer.writerows(rows_collection)
 
 if __name__ == "__main__":
     decode_csv()
+
