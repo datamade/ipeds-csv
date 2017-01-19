@@ -10,19 +10,6 @@ clean:
 
 all: schools_raw.csv
 
-# Targets to create csv files with encoded data from IPEDS; make this file with SQL.
-# HD2014.csv:
-# 		psql -d $(PG_DB) -c \
-# 		'COPY (SELECT "INSTNM", "ADDR", "CITY", "STABBR", "LOCALE", "WEBADDR" \
-# 		FROM "HD2014") TO STDOUT WITH CSV HEADER' > finished/$@
-# 		touch finished/$@
-
-# GR2014.csv:
-# 		psql -d $(PG_DB) -c \
-# 		'COPY (SELECT "GRTOTLT", "GRBKAAT", "GRHISPT" \
-# 		FROM "GR2014") TO STDOUT WITH CSV HEADER' > finished/$@
-# 		touch finished/$@
-
 # Create the main csv file with human readble data from IPEDS
 # schools_processed.csv : schools_raw.csv
 # Code goes here.
