@@ -1,6 +1,5 @@
 # Variables
 PG_DB=ipeds
-GENERATED_FILES = schools_raw.csv
 
 # Non-file targets
 .PHONY: all clean process
@@ -8,7 +7,7 @@ GENERATED_FILES = schools_raw.csv
 clean:
 	rm -Rf build/*
 
-all: schools_raw.csv process
+all: schools_raw.csv build/schools_processed.csv
 
 schools_raw.csv:
 		psql -d $(PG_DB) -c \
@@ -38,7 +37,7 @@ schools_raw.csv:
 		touch build/$@
 
 # Create the main csv file with human readble data from IPEDS
-process:
+build/schools_processed.csv: build/schools_processed.csv
 		python decoder.py
 
 
