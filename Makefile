@@ -1,6 +1,6 @@
 # Variables
 PG_DB=ipeds
-GENERATED_FILES = HD2014.csv GR2014.csv
+GENERATED_FILES = schools_raw.csv
 
 # Non-file targets
 .PHONY: all clean
@@ -8,11 +8,7 @@ GENERATED_FILES = HD2014.csv GR2014.csv
 clean:
 	rm -Rf build/*
 
-all: schools_raw.csv
-
-# Create the main csv file with human readble data from IPEDS
-# schools_processed.csv : schools_raw.csv
-# Code goes here.
+all: $(GENERATED_FILES)
 
 schools_raw.csv:
 		psql -d $(PG_DB) -c \
@@ -41,3 +37,6 @@ schools_raw.csv:
 		TO STDOUT WITH CSV HEADER' > build/$@
 		touch build/$@
 
+# Create the main csv file with human readble data from IPEDS
+# schools_processed.csv : schools_raw.csv
+# Code goes here.
