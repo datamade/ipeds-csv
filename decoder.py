@@ -164,7 +164,7 @@ def decode_csv():
     for h_name in reader.fieldnames:
         new_header.append(headers.get(h_name, None))
 
-    # Use sys.stdput, which takes the target listed in the Makefile.
+    # Use sys.stdout, which takes the target listed in the Makefile.
     writer = csv.DictWriter(sys.stdout, fieldnames=new_header)
     writer.writeheader()
 
