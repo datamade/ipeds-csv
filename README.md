@@ -7,12 +7,12 @@ Use this Makefile to generate a clean, decoded, sparkling CSV, which can be impo
 * postgres
 * make
 
-### On Ubuntu, install requirements like this:
+#### On Ubuntu, install requirements like this:
 ```bash
 sudo apt-get install postgres
 ```
 
-### On Mac OS X, install requirements like this:
+#### On Mac OS X, install requirements like this:
 ```bash
 brew install postgres python
 ```
