@@ -156,20 +156,20 @@ headers = {
 }
 
 def decode_csv():
-    # Use sys.stdin instead of variables pointing to CSV
+    # Use sys.stdin, which takes the dependency listed in the Makefile.
     reader = csv.DictReader(sys.stdin)
     new_header = []
 
+    # Decode the header.
     for h_name in reader.fieldnames:
         new_header.append(headers.get(h_name, None))
-    # writer.writeheader()
 
-    # header = reader.fieldnames
+    # Use sys.stdput, which takes the target listed in the Makefile.
     writer = csv.DictWriter(sys.stdout, fieldnames=new_header)
-
     writer.writeheader()
 
     for row in reader:
+        # Decode the header name in the individual row dict.
         row = dict((headers[key], value) for (key, value) in row.items())
         for column in row:
             try:
@@ -180,8 +180,6 @@ def decode_csv():
                 pass
 
         writer.writerow(row)
-
-
 
 if __name__ == "__main__":
     decode_csv()
