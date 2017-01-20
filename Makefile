@@ -37,7 +37,7 @@ schools_raw.csv:
 		touch build/$@
 
 # Create the main csv file with human readble data from IPEDS
-build/schools_processed.csv: build/schools_processed.csv
-		python decoder.py
+build/schools_processed.csv: build/schools_raw.csv
+		cat $< | python decoder.py > $@
 
 
