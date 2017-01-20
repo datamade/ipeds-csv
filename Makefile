@@ -2,7 +2,7 @@
 PG_DB=ipeds
 
 # Non-file targets
-.PHONY: all clean process
+.PHONY: all clean
 
 clean:
 	rm -Rf build/*
