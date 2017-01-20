@@ -1,9 +1,6 @@
 import csv
 import sys
 
-# file_to_decode = 'build/schools_raw.csv'
-# _, file_to_decode = sys.argv
-
 decoder = {
     "LOCALE": {
         11: "City: Large",
@@ -129,8 +126,13 @@ decoder = {
 }
 
 def decode_csv():
+    # Use sys.stdin instead of variables pointing to CSV
     reader = csv.DictReader(sys.stdin)
-    rows_collection = []
+    header = reader.fieldnames
+    writer = csv.DictWriter(sys.stdout, fieldnames=header)
+
+    writer.writeheader()
+
     for row in reader:
         for column in row:
             try:
@@ -141,17 +143,7 @@ def decode_csv():
             except KeyError:
                 pass
 
-        rows_collection.append(row)
-
-    # output = open(file_to_build, 'wb')
-    writer = csv.DictWriter(sys.stdout, row.keys())
-
-    # Put headers in order.
-    header_dict = dict((h, h) for h in reader.fieldnames)
-    writer.fieldnames = reader.fieldnames
-    writer.writerow(header_dict)
-
-    writer.writerows(rows_collection)
+        writer.writerow(row)
 
 if __name__ == "__main__":
     decode_csv()
