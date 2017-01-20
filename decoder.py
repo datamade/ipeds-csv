@@ -1,7 +1,9 @@
 import csv
+import sys
 
-file_to_decode = 'build/schools_raw.csv'
-file_to_build  = 'build/schools_processed.csv'
+# file_to_decode = 'build/schools_raw.csv'
+# _, file_to_decode = sys.argv
+
 decoder = {
     "LOCALE": {
         11: "City: Large",
@@ -127,30 +129,29 @@ decoder = {
 }
 
 def decode_csv():
-    with open(file_to_decode) as csvfile:
-        reader = csv.DictReader(csvfile)
-        rows_collection = []
-        for row in reader:
-            for column in row:
-                try:
-                    value         = row[column]
-                    decoded_value = decoder[str(column)][int(value)]
-                    row[column]   = decoded_value
+    reader = csv.DictReader(sys.stdin)
+    rows_collection = []
+    for row in reader:
+        for column in row:
+            try:
+                value         = row[column]
+                decoded_value = decoder[str(column)][int(value)]
+                row[column]   = decoded_value
 
-                except KeyError:
-                    pass
+            except KeyError:
+                pass
 
-            rows_collection.append(row)
+        rows_collection.append(row)
 
-        output = open(file_to_build, 'wb')
-        writer = csv.DictWriter(output, row.keys())
+    # output = open(file_to_build, 'wb')
+    writer = csv.DictWriter(sys.stdout, row.keys())
 
-        # Put headers in order.
-        header_dict = dict((h, h) for h in reader.fieldnames)
-        writer.fieldnames = reader.fieldnames
-        writer.writerow(header_dict)
+    # Put headers in order.
+    header_dict = dict((h, h) for h in reader.fieldnames)
+    writer.fieldnames = reader.fieldnames
+    writer.writerow(header_dict)
 
-        writer.writerows(rows_collection)
+    writer.writerows(rows_collection)
 
 if __name__ == "__main__":
     decode_csv()
