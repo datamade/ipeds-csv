@@ -27,11 +27,13 @@ Run the Makefile! It queries the IPEDS database, generates a CSV, and finally de
 
 ```bash
 make all
+```
 
 Want to new results? Clean out the `build` directory, and start over.
 
 ```bash
 make clean
+```
 
 ## Copyright
 
