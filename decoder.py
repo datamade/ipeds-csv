@@ -2,7 +2,7 @@ import csv
 import sys
 
 decoder = {
-    "LOCALE": {
+    "Locale": {
         11: "City: Large",
         12: "City: Midsize",
         13: "City: Small",
@@ -16,7 +16,7 @@ decoder = {
         42: "Rural: Distant",
         43: "Rural: Remote",
     },
-    "INSTSIZE": {
+    "InstitutionSize": {
         -1: "Not reported",
         -2: "Not applicable",
         1: "Under 1,000",
@@ -25,7 +25,7 @@ decoder = {
         4: "10,000 - 19,999",
         5: "20,000 and above",
     },
-    "ICLEVEL": {
+    "Level": {
          -3: "Not available",
          1:  "Four or more years",
          2:  "At least 2 but less than 4 years",
@@ -35,26 +35,26 @@ decoder = {
         1: "Yes",
         2: "No",
     },
-    "ALLONCAM": {
+    "CampusHousingRequired": {
           -1: "Not reported",
           -2: "Not applicable",
           1:  "Yes",
           2:  "No",
     },
-    "ROOM": {
+    "CampusHousing": {
           -1: "Not reported",
           -2: "Not applicable",
           1:  "Yes",
           2:  "No",
     },
-    "BOARD": {
+    "MealPlan": {
           -1: "Not reported",
           -2: "Not applicable",
           1:  "Yes, number of meals in the maximum meal plan offered",
           2:  "Yes, number of meals per week can vary",
           3:  "No",
     },
-    "RELAFFIL": {
+    "ReligiousAffiliation": {
           -1:  "Not reported",
           -2:  "Not applicable",
           22:  "American Evangelical Lutheran Church",
@@ -125,25 +125,63 @@ decoder = {
     }
 }
 
+headers = {
+    'UNITID': 'UnitID',
+    'INSTNM': 'InstitutionName',
+    'ADDR': 'Address',
+    'CITY': 'City',
+    'STABBR': 'State',
+    'LOCALE': 'Locale',
+    'WEBADDR': 'Website',
+    'INSTSIZE': 'InstitutionSize',
+    'ICLEVEL': 'Level',
+    'HBCU': 'HBCU',
+    'ALLONCAM': 'CampusHousingRequired',
+    'ROOM': 'CampusHousing',
+    'BOARD': 'MealPlan',
+    'RELAFFIL': 'ReligiousAffiliation',
+    'BAGR150': '6YearGraduationRate',
+    'GRRTBK': 'BlackGraduationRate',
+    'GRRTHS': 'HispanicGraudationRate',
+    'DVADM01': 'PercentAdmitted',
+    'ENRFT': 'FulltimeEnrollment',
+    'RMINSTTP':'InState',
+    'RMOUSTTP': 'OutOfState',
+    'PCTENRW': 'PercentWomen',
+    'PCTENRBK': 'PercentBlack',
+    'PCTENRHS': 'PercentHispanic',
+    'PCTENRWH': 'PercentWhite',
+    'PGRNT_P': 'PercentPell',
+    'FGRNT_P': 'PercentFederalAid',
+}
+
 def decode_csv():
     # Use sys.stdin instead of variables pointing to CSV
     reader = csv.DictReader(sys.stdin)
-    header = reader.fieldnames
-    writer = csv.DictWriter(sys.stdout, fieldnames=header)
+    new_header = []
+
+    for h_name in reader.fieldnames:
+        new_header.append(headers.get(h_name, None))
+    # writer.writeheader()
+
+    # header = reader.fieldnames
+    writer = csv.DictWriter(sys.stdout, fieldnames=new_header)
 
     writer.writeheader()
 
     for row in reader:
+        row = dict((headers[key], value) for (key, value) in row.items())
         for column in row:
             try:
                 value         = row[column]
                 decoded_value = decoder[str(column)][int(value)]
                 row[column]   = decoded_value
-
             except KeyError:
                 pass
 
         writer.writerow(row)
+
+
 
 if __name__ == "__main__":
     decode_csv()
