@@ -131,6 +131,7 @@ headers = {
     'ADDR': 'Address',
     'CITY': 'City',
     'STABBR': 'State',
+    'ZIP': 'Zip',
     'LOCALE': 'Locale',
     'WEBADDR': 'Website',
     'INSTSIZE': 'InstitutionSize',
