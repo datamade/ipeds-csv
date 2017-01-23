@@ -2,7 +2,7 @@ import csv
 import sys
 
 decoder = {
-    "Locale": {
+    "locale": {
         11: "City: Large",
         12: "City: Midsize",
         13: "City: Small",
@@ -16,7 +16,7 @@ decoder = {
         42: "Rural: Distant",
         43: "Rural: Remote",
     },
-    "InstitutionSize": {
+    "size": {
         -1: "Not reported",
         -2: "Not applicable",
         1: "Under 1,000",
@@ -25,36 +25,36 @@ decoder = {
         4: "10,000 - 19,999",
         5: "20,000 and above",
     },
-    "Level": {
+    "level": {
          -3: "Not available",
          1:  "Four or more years",
          2:  "At least 2 but less than 4 years",
          3:  "Less than 2 years (below associate)",
     },
-    "HBCU": {
+    "hbcu": {
         1: "Yes",
         2: "No",
     },
-    "CampusHousingRequired": {
+    "campus_housing_required": {
           -1: "Not reported",
           -2: "Not applicable",
           1:  "Yes",
           2:  "No",
     },
-    "CampusHousing": {
+    "campus_housing": {
           -1: "Not reported",
           -2: "Not applicable",
           1:  "Yes",
           2:  "No",
     },
-    "MealPlan": {
+    "meal_plan": {
           -1: "Not reported",
           -2: "Not applicable",
           1:  "Yes, number of meals in the maximum meal plan offered",
           2:  "Yes, number of meals per week can vary",
           3:  "No",
     },
-    "ReligiousAffiliation": {
+    "religious_affiliation": {
           -1:  "Not reported",
           -2:  "Not applicable",
           22:  "American Evangelical Lutheran Church",
@@ -126,34 +126,34 @@ decoder = {
 }
 
 headers = {
-    'UNITID': 'UnitID',
-    'INSTNM': 'InstitutionName',
-    'ADDR': 'Address',
-    'CITY': 'City',
-    'STABBR': 'State',
-    'ZIP': 'Zip',
-    'LOCALE': 'Locale',
-    'WEBADDR': 'Website',
-    'INSTSIZE': 'InstitutionSize',
-    'ICLEVEL': 'Level',
-    'HBCU': 'HBCU',
-    'ALLONCAM': 'CampusHousingRequired',
-    'ROOM': 'CampusHousing',
-    'BOARD': 'MealPlan',
-    'RELAFFIL': 'ReligiousAffiliation',
-    'BAGR150': '6YearGraduationRate',
-    'GRRTBK': 'BlackGraduationRate',
-    'GRRTHS': 'HispanicGraudationRate',
-    'DVADM01': 'PercentAdmitted',
-    'ENRFT': 'FulltimeEnrollment',
-    'RMINSTTP':'InState',
-    'RMOUSTTP': 'OutOfState',
-    'PCTENRW': 'PercentWomen',
-    'PCTENRBK': 'PercentBlack',
-    'PCTENRHS': 'PercentHispanic',
-    'PCTENRWH': 'PercentWhite',
-    'PGRNT_P': 'PercentPell',
-    'FGRNT_P': 'PercentFederalAid',
+    'UNITID': 'unit_id',
+    'INSTNM': 'name',
+    'ADDR': 'address_street',
+    'CITY': 'city',
+    'STABBR': 'state',
+    'ZIP': 'zipcode',
+    'LOCALE': 'locale',
+    'WEBADDR': 'website',
+    'INSTSIZE': 'size',
+    'ICLEVEL': 'level',
+    'HBCU': 'hbcu',
+    'ALLONCAM': 'campus_housing_required',
+    'ROOM': 'campus_housing',
+    'BOARD': 'meal_plan',
+    'RELAFFIL': 'religious_affiliation',
+    'BAGR150': 'six_year_grad_rate',
+    'GRRTBK': 'black_grad_rate',
+    'GRRTHS': 'hispanic_grad_rate',
+    'DVADM01': 'percent_admitted',
+    'ENRFT': 'full_time',
+    'RMINSTTP':'in_state',
+    'RMOUSTTP': 'out_of_state',
+    'PCTENRW': 'percent_women',
+    'PCTENRBK': 'percent_black',
+    'PCTENRHS': 'percent_hispanic',
+    'PCTENRWH': 'percent_white',
+    'PGRNT_P': 'percent_pell',
+    'FGRNT_P': 'percent_federal_aid',
 }
 
 def decode_csv():
