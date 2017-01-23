@@ -128,7 +128,7 @@ decoder = {
 headers = {
     'UNITID': 'unit_id',
     'INSTNM': 'name',
-    'ADDR': 'address_street',
+    'ADDR': 'address',
     'CITY': 'city',
     'STABBR': 'state',
     'ZIP': 'zipcode',
