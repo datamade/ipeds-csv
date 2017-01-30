@@ -179,6 +179,8 @@ def decode_csv():
                 row[column]   = decoded_value
             except KeyError:
                 pass
+            except ValueError:
+                pass
 
         writer.writerow(row)
 
