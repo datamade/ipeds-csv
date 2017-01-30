@@ -32,6 +32,7 @@ schools_raw.csv:
 					ON "HD2014"."UNITID"="DRVEF2014"."UNITID" \
 					LEFT JOIN "SFA1314_P1" \
 					ON "HD2014"."UNITID"="SFA1314_P1"."UNITID" \
+					WHERE "HD2014"."SECTOR" NOT IN (3, 6, 9) \
 					) \
 		TO STDOUT WITH CSV HEADER' > build/$@
 		touch build/$@
