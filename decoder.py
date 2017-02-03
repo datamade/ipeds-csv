@@ -2,6 +2,67 @@ import csv
 import sys
 
 decoder = {
+    "state": {
+        "AK": "Alaska",
+        "AL": "Alabama",
+        "AR": "Arkansas",
+        "AS": "American Samoa",
+        "AZ": "Arizona",
+        "CA": "California",
+        "CO": "Colorado",
+        "CT": "Connecticut",
+        "DC": "District of Columbia",
+        "DE": "Delaware",
+        "FL": "Florida",
+        "FM": "Federated States of Micronesia",
+        "GA": "Georgia",
+        "GU": "Guam",
+        "HI": "Hawaii",
+        "IA": "Iowa",
+        "ID": "Idaho",
+        "IL": "Illinois",
+        "IN": "Indiana",
+        "KS": "Kansas",
+        "KY": "Kentucky",
+        "LA": "Louisiana",
+        "MA": "Massachusetts",
+        "MD": "Maryland",
+        "ME": "Maine",
+        "MH": "Marshall Islands",
+        "MI": "Michigan",
+        "MN": "Minnesota",
+        "MO": "Missouri",
+        "MP": "Northern Marianas",
+        "MS": "Mississippi",
+        "MT": "Montana",
+        "NC": "North Carolina",
+        "ND": "North Dakota",
+        "NE": "Nebraska",
+        "NH": "New Hampshire",
+        "NJ": "New Jersey",
+        "NM": "New Mexico",
+        "NV": "Nevada",
+        "NY": "New York",
+        "OH": "Ohio",
+        "OK": "Oklahoma",
+        "OR": "Oregon",
+        "PA": "Pennsylvania",
+        "PR": "Puerto Rico",
+        "PW": "Palau",
+        "RI": "Rhode Island",
+        "SC": "South Carolina",
+        "SD": "South Dakota",
+        "TN": "Tennessee",
+        "TX": "Texas",
+        "UT": "Utah",
+        "VA": "Virginia",
+        "VI": "Virgin Islands",
+        "VT": "Vermont",
+        "WA": "Washington",
+        "WI": "Wisconsin",
+        "WV": "West Virginia",
+        "WY": "Wyoming",
+    },
     "locale": {
         11: "City: Large",
         12: "City: Midsize",
@@ -174,8 +235,13 @@ def decode_csv():
         row = dict((headers[key], value) for (key, value) in row.items())
         for column in row:
             try:
-                value         = row[column]
-                decoded_value = decoder[str(column)][int(value)]
+                value = row[column]
+
+                if value.isdigit():
+                  decoded_value = decoder[str(column)][int(value)]
+                else:
+                  decoded_value = decoder[str(column)][value]
+
                 row[column]   = decoded_value
             except KeyError:
                 pass
