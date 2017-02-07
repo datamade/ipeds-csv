@@ -237,7 +237,7 @@ def decode_csv():
             try:
                 value = row[column]
 
-                if value.isdigit():
+                if value.lstrip("-").isdigit():
                   decoded_value = decoder[str(column)][int(value)]
                 else:
                   decoded_value = decoder[str(column)][value]
