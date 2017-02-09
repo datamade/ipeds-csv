@@ -215,6 +215,8 @@ headers = {
     'PCTENRWH': 'percent_white',
     'PGRNT_P': 'percent_pell',
     'FGRNT_P': 'percent_federal_aid',
+    'ADMSSN': 'admission',
+    'APPLCN': 'application',
 }
 
 def decode_csv():
