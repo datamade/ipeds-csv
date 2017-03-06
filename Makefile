@@ -11,7 +11,7 @@ all: schools_raw.csv build/schools_processed.csv
 
 schools_raw.csv:
 		psql -d $(PG_DB) -c \
-		'COPY (SELECT "HD2014"."UNITID" \
+		'COPY (SELECT "HD2014"."UNITID", \
 					"INSTNM", "ADDR", "CITY", "STABBR", "ZIP", "LOCALE", "WEBADDR", "INSTSIZE", "ICLEVEL", "HBCU", \
 					"ALLONCAM", "ROOM", "BOARD", "RELAFFIL", \
 					"BAGR150", \
