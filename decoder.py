@@ -183,7 +183,12 @@ decoder = {
           103: "Presbyterian",
           104: "Virginia Baptist General Association",
           105: "General Baptist",
-    }
+    },
+    "graduate_offering": {
+          -3: "Not available",
+          1: "Yes",
+          2: "No",
+    },
 }
 
 headers = {
@@ -202,6 +207,7 @@ headers = {
     'ROOM': 'campus_housing',
     'BOARD': 'meal_plan',
     'RELAFFIL': 'religious_affiliation',
+    'GROFFER': 'graduate_offering',
     'BAGR150': 'six_year_grad_rate',
     'GRRTBK': 'black_grad_rate',
     'GRRTHS': 'hispanic_grad_rate',

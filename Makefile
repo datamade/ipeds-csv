@@ -13,7 +13,7 @@ schools_raw.csv:
 		psql -d $(PG_DB) -c \
 		'COPY (SELECT "HD2014"."UNITID", \
 					"INSTNM", "ADDR", "CITY", "STABBR", "ZIP", "LOCALE", "WEBADDR", "INSTSIZE", "ICLEVEL", "HBCU", \
-					"ALLONCAM", "ROOM", "BOARD", "RELAFFIL", \
+					"ALLONCAM", "ROOM", "BOARD", "RELAFFIL", "GROFFER", \
 					"BAGR150", \
 					"GRRTBK", "GRRTHS", \
 					"DVADM01", \
