@@ -19,7 +19,8 @@ schools_raw.csv:
 					"DVADM01", \
 					"ENRFT", "RMINSTTP", "RMOUSTTP", "PCTENRW", "PCTENRBK", "PCTENRHS", "PCTENRWH", \
 					"PGRNT_P", "FGRNT_P", \
-					"ADMSSN", "APPLCN" \
+					"ADMSSN", "APPLCN", \
+					"RET_PCF" \
 					FROM "HD2014" \
 					LEFT JOIN "IC2014" \
 					ON "HD2014"."UNITID"="IC2014"."UNITID" \
@@ -35,6 +36,8 @@ schools_raw.csv:
 					ON "HD2014"."UNITID"="SFA1314_P1"."UNITID" \
 					INNER JOIN "ADM2014" \
 					ON "HD2014"."UNITID"="ADM2014"."UNITID" \
+					LEFT JOIN "EF2014D" \
+					ON "HD2014"."UNITID"="EF2014D"."UNITID" \
 					WHERE "HD2014"."SECTOR" NOT IN (3, 6, 9) \
 					) \
 		TO STDOUT WITH CSV HEADER' > build/$@

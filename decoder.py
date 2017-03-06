@@ -217,6 +217,7 @@ headers = {
     'FGRNT_P': 'percent_federal_aid',
     'ADMSSN': 'admission',
     'APPLCN': 'application',
+    'RET_PCF': 'retention_rate',
 }
 
 def decode_csv():
