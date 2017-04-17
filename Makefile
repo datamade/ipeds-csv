@@ -42,7 +42,7 @@ schools_raw.csv:
 					) \
 		TO STDOUT WITH CSV HEADER' > build/$@
 		touch build/$@
-
+# Schools removed: 'Private for-profit, 4-year or above', 'Private for-profit, 2-year', 'Private for-profit, less-than 2-year'
 # Create the main csv file with human readble data from IPEDS
 build/schools_processed.csv: build/schools_raw.csv
 		cat $< | python decoder.py > $@
