@@ -189,6 +189,48 @@ decoder = {
           1: "Yes",
           2: "No",
     },
+    "rotc": {
+          -1: "Not reported",
+          -2: "Not applicable",
+          0: "Implied no",
+          1: "Yes",
+    },
+    "study_abroad": {
+          -1: "Not reported",
+          -2: "Not applicable",
+          0: "Implied no",
+          1: "Yes",
+    },
+    "on_campus_daycare": {
+          -1: "Not reported",
+          -2: "Not applicable",
+          0: "Implied no",
+          1: "Yes",
+    },
+    'geographic_region': {
+          0:  "US Service School",
+          1:  "New England",
+          2:  "Mid East",
+          3:  "Great Lakes",
+          4:  "Plains",
+          5:  "Southeast",
+          6:  "Southwest",
+          7:  "Rocky Mountains",
+          8:  "Far West",
+          9:  "Outlying areas (AS FM GU MH MP PR PW VI)",
+    },
+    "remedial_services": {
+          -1: "Not reported",
+          -2: "Not applicable",
+          0: "Implied no",
+          1: "Yes",
+    },
+    "academic_career_counseling": {
+          -1: "Not reported",
+          -2: "Not applicable",
+          0: "Implied no",
+          1: "Yes",
+    }
 }
 
 headers = {
@@ -208,6 +250,12 @@ headers = {
     'BOARD': 'meal_plan',
     'RELAFFIL': 'religious_affiliation',
     'GROFFER': 'graduate_offering',
+    'SLO5': 'rotc',
+    'SLO6': 'study_abroad',
+    'STUSRV1': 'remedial_services',
+    'STUSRV2': 'academic_career_counseling',
+    'STUSRV8': 'on_campus_daycare',
+    'OBEREG': 'geographic_region',
     'BAGR150': 'six_year_grad_rate',
     'GRRTBK': 'black_grad_rate',
     'GRRTHS': 'hispanic_grad_rate',
@@ -224,6 +272,7 @@ headers = {
     'ADMSSN': 'admission',
     'APPLCN': 'application',
     'RET_PCF': 'retention_rate',
+    'STUFACR': 'student_faculty_ratio'
 }
 
 def decode_csv():

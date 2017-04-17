@@ -13,14 +13,14 @@ schools_raw.csv:
 		psql -d $(PG_DB) -c \
 		'COPY (SELECT "HD2014"."UNITID", \
 					"INSTNM", "ADDR", "CITY", "STABBR", "ZIP", "LOCALE", "WEBADDR", "INSTSIZE", "ICLEVEL", "HBCU", \
-					"ALLONCAM", "ROOM", "BOARD", "RELAFFIL", "GROFFER", \
+					"ALLONCAM", "ROOM", "BOARD", "RELAFFIL", "GROFFER", "SLO5", "SLO6", "STUSRV1", "STUSRV2", "STUSRV8", "OBEREG", \
 					"BAGR150", \
 					"GRRTBK", "GRRTHS", \
 					"DVADM01", \
 					"ENRFT", "RMINSTTP", "RMOUSTTP", "PCTENRW", "PCTENRBK", "PCTENRHS", "PCTENRWH", \
 					"PGRNT_P", "FGRNT_P", \
 					"ADMSSN", "APPLCN", \
-					"RET_PCF" \
+					"RET_PCF", "STUFACR" \
 					FROM "HD2014" \
 					LEFT JOIN "IC2014" \
 					ON "HD2014"."UNITID"="IC2014"."UNITID" \
