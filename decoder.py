@@ -259,6 +259,7 @@ headers = {
     'BAGR150': 'six_year_grad_rate',
     'GRRTBK': 'black_grad_rate',
     'GRRTHS': 'hispanic_grad_rate',
+    'GRRTAS': 'asian_grad_rate',
     'DVADM01': 'percent_admitted',
     'ENRFT': 'full_time',
     'RMINSTTP':'in_state',
