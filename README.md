@@ -23,7 +23,7 @@ Before running this Makefile, you need a PostGres database with tables built fro
 
 ## Usage
 
-Run the Makefile! It queries the IPEDS database, generates a CSV, and finally decodes that CSV into a human readable format. You can find the results in the `build` directory.
+Run the Makefile! It queries the IPEDS database, generates a CSV, and finally decodes that CSV into a human-readable format. You can find the results in the `build` directory.
 
 ```bash
 make all
@@ -34,6 +34,8 @@ Want something different? Clean out the `build` directory, and start over.
 ```bash
 make clean
 ```
+
+Find a usable, human-readable CSV document in `/build/schools_processed.csv`. This document provides the data for the [College Matching site](https://github.com/datamade/college-matching-django): move it into the `/data/` directory of that repo.
 
 ## Copyright
 
